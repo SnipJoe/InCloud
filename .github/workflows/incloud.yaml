@@ -23,12 +23,12 @@ jobs:
            
         
 
-      - name: Cache Go
-        id: cache-go
-        uses: actions/cache@v2
-        with:
-          path: /home/runner/go
-          key: ${{ runner.os }}-go
+      #- name: Cache Go
+       # id: cache-go
+        #uses: actions/cache@v2
+        #with:
+         # path: /home/runner/go
+          #key: ${{ runner.os }}-go
 
       - name: Setting up ProjectDiscovery tools
         #uses:
