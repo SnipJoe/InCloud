@@ -19,19 +19,9 @@ jobs:
           key: ${{ runner.os }}-go
 
       - name: Setup Dependencies
-        run: sudo apt-get install libpcap-dev 
-           
-        
-
-      #- name: Cache Go
-       # id: cache-go
-        #uses: actions/cache@v2
-        #with:
-         # path: /home/runner/go
-          #key: ${{ runner.os }}-go
+        run: sudo apt-get install libpcap-dev  
 
       - name: Setting up ProjectDiscovery tools
-        #uses:
         env:
           GO111MODULE: on
         run: |
@@ -42,14 +32,15 @@ jobs:
           go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
           go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest
           
-          with:
-            os:'V1'
-            cash: 'discover'
-            path: /home/runner/discove
-            key: ${{ runner.os }}-discove
         shell: bash
         
-
+      - name: Cache ProjectDiscovery tools
+        uses: actions/cache@v3
+        with:
+          cache: 'tools'
+          path: /home/runner/tools
+          key: ${{ runner.os }}-go-tools
+        
 
       - name: Running SubFinder for passive DNS enumeration
         run: |
