@@ -38,9 +38,8 @@ jobs:
         uses: actions/cache@v3
         with:
           cache: 'tools'
-          path: /home/runner/tools
+          path: /home/runner/go
           key: ${{ runner.os }}-go-tools
-        
 
       - name: Running SubFinder for passive DNS enumeration
         run: |
